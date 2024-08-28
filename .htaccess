@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Excepción para la carpeta css
+RewriteCond %{REQUEST_URI} ^/css/ [NC]
+RewriteRule ^ - [L]
+
+# Continuar con las reglas generales
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
